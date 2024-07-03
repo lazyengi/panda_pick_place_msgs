@@ -7,7 +7,10 @@ project(panda_pick_place_msgs)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+    std_msgs
+    message_generation
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -48,7 +51,9 @@ add_message_files(
   StatusHeader.msg
   Box.msg
   DetectionResults.msg
+  DetectionRequest.msg
   RealWorldCoord.msg
+  RealWorldSize.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -103,7 +108,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES panda_pick_place_msgs
-  CATKIN_DEPENDS rospy std_msgs message_runtime
+  CATKIN_DEPENDS std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
